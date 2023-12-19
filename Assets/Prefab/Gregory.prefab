@@ -2869,7 +2869,9 @@ GameObject:
   - component: {fileID: 6890114142867227390}
   - component: {fileID: 6360966506364641248}
   - component: {fileID: 6584868780735309348}
-  - component: {fileID: 8460117872584035251}
+  - component: {fileID: 6501298073527273845}
+  - component: {fileID: 8784259827304653881}
+  - component: {fileID: 941876577177045751}
   m_Layer: 0
   m_Name: Gregory
   m_TagString: Player
@@ -2886,7 +2888,7 @@ Transform:
   m_GameObject: {fileID: 5032502853327589391}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.5, y: 0, z: 0}
+  m_LocalPosition: {x: 1.5, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2927,8 +2929,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a49bcea5c62b4469a0549ff96e9b15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  slideForce: 5
+  speed: 2
+  slideForce: 2
+  jumpForce: 4
   animationSpeedRatio: 4
   rb: {fileID: 6360966506364641248}
   animator: {fileID: 6940227930055261496}
@@ -2943,7 +2946,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -2973,8 +2976,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGroundTouched: 1
---- !u!65 &8460117872584035251
-BoxCollider:
+--- !u!136 &6501298073527273845
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2991,9 +2994,48 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.5, y: 1.2, z: 0.4}
+  serializedVersion: 2
+  m_Radius: 0.25
+  m_Height: 1.2
+  m_Direction: 1
   m_Center: {x: 0, y: 0.6, z: 0.1}
+--- !u!114 &8784259827304653881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5032502853327589391}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbe45caeb922a984b9f1ff4bdb5e4b15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 2
+  rb: {fileID: 6360966506364641248}
+  animator: {fileID: 6940227930055261496}
+  groundcheck: {fileID: 6584868780735309348}
+--- !u!135 &941876577177045751
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5032502853327589391}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.05
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5045199752729598825
 GameObject:
   m_ObjectHideFlags: 0
