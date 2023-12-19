@@ -77,10 +77,11 @@ public class moveByStick : MonoBehaviour
             && Mathf.Abs(Time.deltaTime - elapsedTime) < 0.2
             && hasStartASwipe)
         {
-            Debug.LogError("Jump");
             if (groundcheck.isGroundTouched)
             {
                 rb.velocity = new Vector3(rb.velocity.x, jumpForce, speed);
+                animator.SetBool("isGrounded", groundcheck.isGroundTouched);
+
             }
         }
         hasStartASwipe = false;
