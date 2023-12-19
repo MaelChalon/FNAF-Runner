@@ -8,11 +8,17 @@ public class GroundCheck : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        isGroundTouched = true;
+        if (other.gameObject.tag == "Ground")
+        {
+            isGroundTouched = true;
+        }   
     }
 
     private void OnTriggerExit(Collider other)
     {
-        isGroundTouched = false;
+        if (other.gameObject.tag == "Ground")
+        {
+            isGroundTouched = false;
+        }
     }
 }
