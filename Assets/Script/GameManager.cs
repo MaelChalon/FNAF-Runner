@@ -32,7 +32,9 @@ public class GameManager : Singleton<GameManager>
             Position += 10;
             Vector3 spawnPoint = new Vector3(0, 0, Position);
 
-            GameObject.Instantiate(Coridors[0], spawnPoint, Quaternion.identity);
+            int randomNumber = UnityEngine.Random.Range(0, 10);
+
+            GameObject.Instantiate(Coridors[randomNumber], spawnPoint, Quaternion.identity);
         }
     }
 
