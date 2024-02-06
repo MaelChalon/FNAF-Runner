@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 using EnhancedTouch = UnityEngine.InputSystem.EnhancedTouch;
 
 
-public class moveByStick : MonoBehaviour
+public class moveBySwipe : MonoBehaviour
 {
     public float speed = 10.0f;
     public int slideForce = 2;
@@ -13,7 +13,10 @@ public class moveByStick : MonoBehaviour
     public Rigidbody rb;
     public Animator animator;
     public GroundCheck groundcheck;
-
+    public float accelerationRate = 0.2f; // Rate at which speed increases per second
+    
+    private float timer = 0.0f;
+    private float speedIncreaseInterval = 5.0f;
     private Vector2 fingerDownV2 = Vector2.zero;
     private float elapsedTime = 0f;
     private bool hasStartASwipe = false;
@@ -89,6 +92,15 @@ public class moveByStick : MonoBehaviour
 
     void Update()
     {
+        timer += Time.deltaTime;
+
+        // Increase speed gradually over time
+        if (timer >= speedIncreaseInterval && speed < 6f)
+        {
+            speed += accelerationRate;
+            timer = 0.0f; // Reset the timer after increasing speed
+        }
+
         rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y,speed);
         animator.SetFloat("Speed", speed);
         animator.SetBool("isGrounded", groundcheck.isGroundTouched);

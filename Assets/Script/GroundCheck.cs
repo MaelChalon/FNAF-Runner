@@ -4,21 +4,38 @@ using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
 {
-    public bool isGroundTouched = true;
+    public bool isGroundTouched = false;
+    private bool enterNextCorridor = false;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Ground")
         {
-            isGroundTouched = true;
-        }   
+            if (isGroundTouched)
+            {
+                enterNextCorridor = true;
+            }
+            else
+            {
+                isGroundTouched = true;
+            }
+            
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Ground")
         {
-            isGroundTouched = false;
+            if (!enterNextCorridor)
+            {
+                isGroundTouched = !isGroundTouched;
+            }
+            else
+            {
+                enterNextCorridor = false;
+            }
+
         }
     }
 }
