@@ -152,6 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a799090e37a804f9ebb243120541ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnded: 0
+  restartBtn: {fileID: 1334631670}
   Coridors: []
 --- !u!4 &137492009
 Transform:
@@ -754,7 +756,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1209,6 +1211,7 @@ GameObject:
   - component: {fileID: 1334631672}
   - component: {fileID: 1334631671}
   - component: {fileID: 1334631670}
+  - component: {fileID: 1334631673}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -1234,7 +1237,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 900, y: 400}
+  m_SizeDelta: {x: 1000, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1334631670
 MonoBehaviour:
@@ -1318,6 +1321,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1334631668}
   m_CullTransparentMesh: 1
+--- !u!114 &1334631673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334631668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 779ad2d601d8252479a82297d5fedadc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  restartLayer:
+    serializedVersion: 2
+    m_Bits: 32
 --- !u!1001 &1755066094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1396,7 +1414,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1823508991
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1583,7 +1601,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823508990}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fae20e0c45d62fd488f6ed12ed8f6874, type: 3}
   m_Name: 
@@ -1806,7 +1824,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2145092545
 RectTransform:
   m_ObjectHideFlags: 0
