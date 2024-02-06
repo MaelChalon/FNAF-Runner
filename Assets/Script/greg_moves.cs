@@ -56,54 +56,69 @@ public class moveBySwipe : MonoBehaviour
 
         float yRatio = Mathf.Abs(inputMovement.x - fingerDownV2.x) / Screen.width;
         float xRatio = Mathf.Abs(inputMovement.y - fingerDownV2.y) / Screen.height;
-
-        if (yRatio > xRatio 
-            && yRatio > 0.1 
-            && Mathf.Abs(Time.deltaTime - elapsedTime) < 0.2 
-            && hasStartASwipe)
+        if (!GameManager.instance.isEnded)
         {
-            if(inputMovement.x - fingerDownV2.x < 0 && pos >= 0)
+            if (yRatio > xRatio
+                && yRatio > 0.1
+                && Mathf.Abs(Time.deltaTime - elapsedTime) < 0.2
+                && hasStartASwipe)
             {
-                pos -= 1;
-                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, speed);
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x-1, gameObject.transform.position.y, gameObject.transform.position.z);
+                if (inputMovement.x - fingerDownV2.x < 0 && pos >= 0)
+                {
+                    pos -= 1;
+                    rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, speed);
+                    gameObject.transform.position = new Vector3(gameObject.transform.position.x - 1, gameObject.transform.position.y, gameObject.transform.position.z);
+                }
+                else if (inputMovement.x - fingerDownV2.x > 0 && pos <= 0)
+                {
+                    pos += 1;
+                    rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, speed);
+                    gameObject.transform.position = new Vector3(gameObject.transform.position.x + 1, gameObject.transform.position.y, gameObject.transform.position.z);
+                }
             }
-            else if (inputMovement.x - fingerDownV2.x > 0 && pos <= 0)
-            {
-                pos += 1;
-                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, speed);
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x + 1, gameObject.transform.position.y, gameObject.transform.position.z);
-            }
-        }
 
-        else if (xRatio > yRatio && xRatio > 0.1
-            && Mathf.Abs(Time.deltaTime - elapsedTime) < 0.2
-            && hasStartASwipe)
-        {
-            if (groundcheck.isGroundTouched)
+            else if (xRatio > yRatio && xRatio > 0.1
+                && Mathf.Abs(Time.deltaTime - elapsedTime) < 0.2
+                && hasStartASwipe)
             {
-                rb.velocity = new Vector3(rb.velocity.x, jumpForce, speed);
-                animator.SetBool("isGrounded", groundcheck.isGroundTouched);
+                if (groundcheck.isGroundTouched)
+                {
+                    rb.velocity = new Vector3(rb.velocity.x, jumpForce, speed);
+                    animator.SetBool("isGrounded", groundcheck.isGroundTouched);
 
+                }
             }
+            hasStartASwipe = false;
         }
-        hasStartASwipe = false;
     }
 
     void Update()
     {
-        timer += Time.deltaTime;
-
-        // Increase speed gradually over time
-        if (timer >= speedIncreaseInterval && speed < 6f)
+        if (GameManager.Instance.isEnded)
         {
-            speed += accelerationRate;
-            timer = 0.0f; // Reset the timer after increasing speed
+            rb.velocity = new Vector3(0,0, 0);
         }
+        else
+        {
+            timer += Time.deltaTime;
 
-        rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y,speed);
-        animator.SetFloat("Speed", speed);
-        animator.SetBool("isGrounded", groundcheck.isGroundTouched);
-        animator.speed = speed/animationSpeedRatio;
+            if (timer >= speedIncreaseInterval)
+            {
+                GameManager.Instance.addScore();
+            }
+
+            // Increase speed gradually over time
+            if (timer >= speedIncreaseInterval && speed < 6f)
+            {
+                speed += accelerationRate;
+                timer = 0.0f; // Reset the timer after increasing speed
+            }
+
+
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, speed);
+            animator.SetFloat("Speed", speed);
+            animator.SetBool("isGrounded", groundcheck.isGroundTouched);
+            animator.speed = speed / animationSpeedRatio;
+        }
     }
 }
