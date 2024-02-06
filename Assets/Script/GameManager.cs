@@ -1,41 +1,25 @@
-//using UnityEngine.UIElements;
+using UnityEngine.UIElements;
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
     private int score = 0;
-    private int pizza = 0;
-    public bool isEnded = true;
-    public Button restartBtn;
     public List<GameObject> Coridors = new List<GameObject>();
     private static int Position = 0;
-
-
-    private void Start()
-    {
-        restartBtn.gameObject.SetActive(false);
-    }
 
     public void addScore()
     {
         score++;
     }
 
-    public int getDistanceScore()
+    public void eatPizza()
     {
-        return score;
+        score += 100;
     }
-
-    public void addPizza() { pizza++; }
-
-    public int getPizza() {  return pizza; }
 
     public void InitScene()
     {
-        restartBtn.gameObject.SetActive(false);
         for (int i = 0; i< 11; i++) {
             spawnNewCoridor();
         }
@@ -62,20 +46,6 @@ public class GameManager : Singleton<GameManager>
     public int getPosition()
     {
         return Position;
-    }
-
-    public void endGame()
-    {
-        isEnded = true;
-        restartBtn.gameObject.SetActive(true);
-    }
-
-    public void restartGame()
-    {
-        score = 0;
-        pizza = 0;
-        restartBtn.gameObject.SetActive(false);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
      
 }
