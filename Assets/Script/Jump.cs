@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using EnhancedTouch = UnityEngine.InputSystem.EnhancedTouch;
 
@@ -13,8 +14,13 @@ public class Jump : MonoBehaviour
     private Vector2 fingerDownV2 = Vector2.zero;
     private float elapsedTime = 0f;
     private bool hasStartASwipe = false;
+    private Stopwatch stopwatch;
 
 
+    private void Start()
+    {
+        stopwatch = new Stopwatch();
+    }
     public void OnEnable()
     {
         EnhancedTouch.TouchSimulation.Enable();
@@ -50,9 +56,10 @@ public class Jump : MonoBehaviour
             && Mathf.Abs(Time.deltaTime - elapsedTime) < 0.2
             && hasStartASwipe)
         {
-            if (groundcheck.isGroundTouched)
+            if (groundcheck.isGroundTouched && stopwatch.Elapsed.TotalSeconds >= 2)
             {
                 rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
+                stopwatch.Restart();
             }
             hasStartASwipe = false;
         }
