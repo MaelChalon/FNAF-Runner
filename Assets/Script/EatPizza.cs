@@ -10,7 +10,7 @@ public class EatPizza : MonoBehaviour
         {
             GameManager.Instance.addPizza();
 
-            Destroy(gameObject);
+            Destroy(collider.gameObject);
         }
     }
 }
