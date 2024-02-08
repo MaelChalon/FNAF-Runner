@@ -7,7 +7,7 @@ public class GameManager : Singleton<GameManager>
 {
     private int score = 0;
     private int pizza = 0;
-    public bool isEnded = true;
+    public bool isEnded = false;
     public Button restartBtn;
     public List<GameObject> Coridors = new List<GameObject>();
     private static int Position = 0;
@@ -16,6 +16,7 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         restartBtn.gameObject.SetActive(false);
+        InitScene();
     }
 
     public void addScore()
@@ -53,7 +54,7 @@ public class GameManager : Singleton<GameManager>
             Position += 10;
             Vector3 spawnPoint = new Vector3(0, 0, Position);
 
-            GameObject.Instantiate(Coridors[0], spawnPoint, Quaternion.identity);
+            GameObject.Instantiate(Coridors[UnityEngine.Random.Range(0, 10)], spawnPoint, Quaternion.identity);
         }
     }
 
