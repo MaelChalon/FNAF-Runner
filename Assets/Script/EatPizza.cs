@@ -8,7 +8,7 @@ public class EatPizza : MonoBehaviour
     {
         if (collider.gameObject.tag == "Colectible")
         {
-            GameManager.Instance.eatPizza();
+            GameManager.Instance.addPizza();
 
             Destroy(gameObject);
         }
