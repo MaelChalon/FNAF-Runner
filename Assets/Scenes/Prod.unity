@@ -381,6 +381,7 @@ GameObject:
   - component: {fileID: 253486986}
   - component: {fileID: 253486985}
   - component: {fileID: 253486984}
+  - component: {fileID: 253486990}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -581,6 +582,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &253486990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253486982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c94ca70bfdb60e41b327faf00b59a78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 253486985}
 --- !u!1 &427590240
 GameObject:
   m_ObjectHideFlags: 0
@@ -928,6 +942,7 @@ GameObject:
   - component: {fileID: 1006613569}
   - component: {fileID: 1006613568}
   - component: {fileID: 1006613567}
+  - component: {fileID: 1006613572}
   m_Layer: 5
   m_Name: Collectible
   m_TagString: Untagged
@@ -1114,6 +1129,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1006613572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006613565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a9f3b82c47b7d42b5ed94fbef28402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 1006613567}
 --- !u!1001 &1041817769
 PrefabInstance:
   m_ObjectHideFlags: 0
