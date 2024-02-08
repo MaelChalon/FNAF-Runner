@@ -11,12 +11,13 @@ public class GameManager : Singleton<GameManager>
     public Button restartBtn;
     public List<GameObject> Coridors = new List<GameObject>();
     private static int Position = 0;
+    private int life;
 
 
     private void Start()
     {
         restartBtn.gameObject.SetActive(false);
-        InitScene();
+        startGame();
     }
 
     public void addScore()
@@ -32,6 +33,17 @@ public class GameManager : Singleton<GameManager>
     public void addPizza() { pizza++; }
 
     public int getPizza() { return pizza; }
+    public int getScore() { return score; }
+    public int getLife() { return life; }
+
+    public void hitObstacle()
+    {
+        life--;
+        if (life <= 0 )
+        {
+            endGame();
+        }
+    } 
 
     public void InitScene()
     {
@@ -63,6 +75,13 @@ public class GameManager : Singleton<GameManager>
         return Position;
     }
 
+    public void startGame()
+    {
+        life = 3;
+        InitScene();
+        isEnded = false;
+    }
+
     public void endGame()
     {
         isEnded = true;
@@ -75,6 +94,7 @@ public class GameManager : Singleton<GameManager>
         pizza = 0;
         restartBtn.gameObject.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        startGame();
     }
 
 }

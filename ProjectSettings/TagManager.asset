@@ -7,7 +7,6 @@ TagManager:
   - Ground
   - Obstacle
   - Colectible
-  - obstacle
   layers:
   - Default
   - TransparentFX

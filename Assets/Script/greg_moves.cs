@@ -108,7 +108,7 @@ public class moveBySwipe : MonoBehaviour
             }
 
             // Increase speed gradually over time
-            if (timer >= speedIncreaseInterval && speed < 6f)
+            if (timer >= speedIncreaseInterval && speed < 5.6f)
             {
                 speed += accelerationRate;
                 timer = 0.0f; // Reset the timer after increasing speed
