@@ -5,10 +5,14 @@ using UnityEngine;
 
 public class UpdateLife : MonoBehaviour
 {
-    public TextMeshProUGUI scoreText = null;
+    public TextMeshProUGUI Life = null;
 
+    // Update is called once per frame
     void Update()
     {
-        scoreText.text = "Life : " + GameManager.instance.getLife();
+        if (Life != null)
+        {
+            Life.text = "Life : " + GameManager.instance.getLife();
+        }
     }
 }

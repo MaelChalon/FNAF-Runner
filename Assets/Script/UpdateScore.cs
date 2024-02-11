@@ -5,10 +5,14 @@ using UnityEngine;
 
 public class UpdateScore : MonoBehaviour
 {
-    public TextMeshProUGUI scoreText = null;
+    public TextMeshProUGUI Score = null;
 
+    // Update is called once per frame
     void Update()
     {
-        scoreText.text = "Score : " + GameManager.instance.getScore();
+        if (Score != null)
+        {
+            Score.text = "Score : " + GameManager.instance.getScore();
+        }
     }
 }

@@ -77,6 +77,7 @@ public class GameManager : Singleton<GameManager>
 
     public void startGame()
     {
+        Position = 0;
         life = 3;
         InitScene();
         isEnded = false;
