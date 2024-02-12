@@ -14,7 +14,8 @@ public class moveBySwipe : MonoBehaviour
     public Animator animator;
     public GroundCheck groundcheck;
     public float accelerationRate = 0.2f; // Rate at which speed increases per second
-    
+    public AudioSource movementSound;
+
     private float timer = 0.0f;
     private float speedIncreaseInterval = 5.0f;
     private Vector2 fingerDownV2 = Vector2.zero;
@@ -65,12 +66,14 @@ public class moveBySwipe : MonoBehaviour
             {
                 if (inputMovement.x - fingerDownV2.x < 0 && pos >= 0)
                 {
+                    movementSound.Play();
                     pos -= 1;
                     rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, speed);
                     gameObject.transform.position = new Vector3(gameObject.transform.position.x - 1, gameObject.transform.position.y, gameObject.transform.position.z);
                 }
                 else if (inputMovement.x - fingerDownV2.x > 0 && pos <= 0)
                 {
+                    movementSound.Play();
                     pos += 1;
                     rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, speed);
                     gameObject.transform.position = new Vector3(gameObject.transform.position.x + 1, gameObject.transform.position.y, gameObject.transform.position.z);
