@@ -10,6 +10,7 @@ public class GameManager : Singleton<GameManager>
     public bool isEnded = false;
     public Button restartBtn;
     public List<GameObject> Coridors = new List<GameObject>();
+    public AudioSource music;
     private static int Position = 0;
     private int life;
 
@@ -47,6 +48,8 @@ public class GameManager : Singleton<GameManager>
 
     public void InitScene()
     {
+        music.loop = true;
+        music.Play();
         restartBtn.gameObject.SetActive(false);
         for (int i = 0; i < 11; i++)
         {
