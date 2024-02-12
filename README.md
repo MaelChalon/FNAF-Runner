@@ -1,1 +1,1 @@
-L'APK se trouve dans le dossier Build du projet.
+L'APK se trouve dans le dossier APK du projet.
